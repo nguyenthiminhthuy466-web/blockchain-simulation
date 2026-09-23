@@ -1,4 +1,4 @@
-// Import các hàm từ phân hệ crypto của nhóm (SHA-256 và Cây Merkle)
+// Import các hàm từ phân hệ crypto (SHA-256 và Cây Merkle)
 import { sha256 } from 'client/src/cryto/SHA-256.js'; 
 import { getMerkleRoot } from 'client/src/crypto/MerkleTree.jsx';   
 
