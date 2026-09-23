@@ -85,8 +85,3 @@ class Blockchain {
         return true;
     }
 }
-
-// Export module nếu dùng trong môi trường Node.js
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { Block, Blockchain };
-}
