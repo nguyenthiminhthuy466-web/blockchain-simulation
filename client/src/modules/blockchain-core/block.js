@@ -31,7 +31,7 @@ class Block {
         this.hash = this.calculateHash();
     }
 
-    //Hàm tính mã băm Hash của khối dựa trên dữ liệu P2
+    //Hàm tính mã băm Hash của khối
     calculateHash() {
         const headerString = `${this.version}-${this.prevHash}-${JSON.stringify(this.transactions)}-${this.timestamp}`;
         return sha256(headerString);
