@@ -1,9 +1,4 @@
-/* =============================================================================
- *  block_p2.js — Yêu cầu P2: Class Block, tính Hash, isChainValid()
- *  Mốc deadline: 23/09
- * ========================================================================== */
-
-// Hàm SHA-256 giả lập (Mocking) trong trường hợp Crypto Engineer chưa nộp P1
+// Hàm SHA-256 giả lập (chưa có P1)
 if (typeof sha256 !== 'function') {
     var sha256 = function(data) {
         // Sử dụng CryptoJS nếu có, hoặc tạo hash mock cơ bản
@@ -21,9 +16,7 @@ if (typeof sha256 !== 'function') {
 
 const ZERO_HASH = new Array(65).join('0');
 
-/**
- * 1. LỚP BLOCK (Cấu trúc khối nền tảng cho P2)
- */
+//1. LỚP BLOCK (Cấu trúc khối nền tảng cho P2)
 class Block {
     constructor(version, prevHash, transactions, timestamp) {
         this.version = version || 1;
@@ -38,18 +31,15 @@ class Block {
         this.hash = this.calculateHash();
     }
 
-    /**
-     * Hàm tính mã băm Hash của khối dựa trên dữ liệu P2
-     */
+    //Hàm tính mã băm Hash của khối dựa trên dữ liệu P2
     calculateHash() {
         const headerString = `${this.version}-${this.prevHash}-${JSON.stringify(this.transactions)}-${this.timestamp}`;
         return sha256(headerString);
     }
 }
 
-/**
- * 2. LỚP BLOCKCHAIN (Quản lý chuỗi khối & kiểm tra tính toàn vẹn)
- */
+//LỚP BLOCKCHAIN (Quản lý chuỗi khối & kiểm tra tính toàn vẹn)
+ 
 class Blockchain {
     constructor() {
         this.head = null;
@@ -60,9 +50,7 @@ class Blockchain {
         this.addBlock([{ sender: "System", recipient: "Genesis", amount: 0 }]);
     }
 
-    /**
-     * Thêm một khối mới vào danh sách liên kết
-     */
+    //Thêm một khối mới vào danh sách liên kết
     addBlock(transactions) {
         const previousHash = this.tail ? this.tail.hash : ZERO_HASH;
         const newBlock = new Block(1, previousHash, transactions);
@@ -78,9 +66,7 @@ class Blockchain {
         return newBlock;
     }
 
-    /**
-     * Hàm kiểm tra tính hợp lệ toàn vẹn của chuỗi (isChainValid / isValid)
-     */
+    // Hàm kiểm tra tính hợp lệ toàn vẹn của chuỗi 
     isChainValid() {
         let current = this.head;
         while (current) {
