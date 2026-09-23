@@ -16,7 +16,7 @@ if (typeof sha256 !== 'function') {
 
 const ZERO_HASH = new Array(65).join('0');
 
-//1. LỚP BLOCK (Cấu trúc khối nền tảng cho P2)
+//LỚP BLOCK 
 class Block {
     constructor(version, prevHash, transactions, timestamp) {
         this.version = version || 1;
