@@ -1,18 +1,17 @@
 {
-  "name": "server",
+  "name": "blockchain-p2p-simulation-server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Backend mô phỏng mạng Full Node Blockchain P2P (đồ án môn học)",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "node1": "node server.js --http=3001 --ws=6001 --name=Node-1",
+    "node2": "node server.js --http=3002 --ws=6002 --name=Node-2 --peers=ws://localhost:6001",
+    "node3": "node server.js --http=3003 --ws=6003 --name=Node-3 --peers=ws://localhost:6001"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "ws": "^8.21.3"
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "ws": "^8.17.0"
   }
 }
