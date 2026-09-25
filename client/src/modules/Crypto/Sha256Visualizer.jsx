@@ -6,7 +6,7 @@ export default function Sha256Visualizer() {
   const [shaInput, setShaInput] = useState('Hello Blockchain');
   const [shaResult, setShaResult] = useState('');
   const [i1, setI1] = useState('HanTruong');
-  const [i2, setI2] = useState('HanTruong!');
+  const [i2, setI2] = useState('TruongHan');
   const [av, setAv] = useState(null);
   const [powData, setPowData] = useState('Block #1 Data');
   const [prefix, setPrefix] = useState('0000');

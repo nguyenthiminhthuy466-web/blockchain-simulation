@@ -3,6 +3,7 @@ import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
+import Sha256Visualizer from './modules/Crypto/Sha256Visualizer';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,6 +11,8 @@ function App() {
   return (
     <>
       <section id="center">
+  <Sha256Visualizer />  
+  <div className="hero"></div>
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
           <img src={reactLogo} className="framework" alt="React logo" />
