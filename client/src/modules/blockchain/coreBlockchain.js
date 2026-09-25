@@ -1,6 +1,7 @@
 // Import các hàm từ phân hệ crypto (SHA-256 và Cây Merkle)
-import { sha256 } from 'client/src/cryto/SHA-256.js'; 
-import { getMerkleRoot } from 'client/src/crypto/MerkleTree.jsx';   
+import { calculateSHA256 as sha256 } from "../Crypto/SHA-256.js";
+import { getMerkleRoot } from "../Crypto/merkle.js";
+import { mineBlock } from "./pow.js";
 
 // Chuỗi 64 số 0 dùng làm giá trị khởi tạo cho khối Genesis (khối đầu tiên)
 const ZERO_HASH = new Array(65).join('0');
@@ -164,7 +165,7 @@ export class Blockchain {
         for (let i = Math.max(0, index); i < blocks.length; i++) {
             blocks[i].prevHash = i === 0 ? ZERO_HASH : blocks[i - 1].hash;
 
-            if (this.difficulty > 0 && typeof mineBlock === 'function') {
+            if (this.difficulty > 0 {
                 const res = mineBlock(blocks[i], this.difficulty);
                 totalAttempts += res.attempts;
             } else {
