@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Blockchain } from './coreBlockchain.js';
-import { calculateSHA256 as sha256 } from '../Crypto/SHA-256.js'; 
+import { calculateSHA256 as sha256 } from '../crypto/SHA-256.js'; 
 
 export default function BlockHeaderViewer() {
   const [blockchain] = useState(() => {

@@ -1,6 +1,6 @@
 // Import các hàm mã hóa/băm từ các thư mục mô-đun liên quan
-import { calculateSHA256 as sha256 } from "../Crypto/SHA-256.js";
-import { getMerkleRoot } from "../Crypto/merkle.js";
+import { calculateSHA256 as sha256 } from "../crypto/SHA-256.js";
+import { getMerkleRoot } from "../crypto/merkle.js";
 import { mineBlock } from "./pow.js";
 
 // Chuỗi 64 số 0 mặc định (64 ký tự hex) dùng cho prevHash của khối Genesis
