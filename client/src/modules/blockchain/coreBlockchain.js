@@ -19,7 +19,7 @@ export class Block {
         let txHashes = this.transactions.map(tx => 
             typeof tx === 'string' ? tx : sha256(JSON.stringify(tx))
         );
-        this.merkleRoot = typeof getMerkleRoot === 'function' ? getMerkleRoot(txHashes) : ZERO_HASH;
+        this.merkleRoot = getMerkleRoot(txHashes);
 
         this.timestamp = typeof timestamp === 'number' ? timestamp : Date.now() / 1000; // Thời gian tạo khối
         this.difficulty = difficulty || 0;              // Độ khó của thuật toán PoW
@@ -165,7 +165,7 @@ export class Blockchain {
         for (let i = Math.max(0, index); i < blocks.length; i++) {
             blocks[i].prevHash = i === 0 ? ZERO_HASH : blocks[i - 1].hash;
 
-            if (this.difficulty > 0 {
+            if (this.difficulty > 0) {
                 const res = mineBlock(blocks[i], this.difficulty);
                 totalAttempts += res.attempts;
             } else {
