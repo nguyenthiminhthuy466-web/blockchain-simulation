@@ -272,7 +272,6 @@
 
   border: 1px solid rgba(34, 211, 238, 0.2);
   border-radius: 14px;
-
   background: linear-gradient(
     135deg,
     rgba(34, 211, 238, 0.1),
@@ -680,6 +679,19 @@
 .transaction-status.pending {
   background: rgba(245, 158, 11, 0.12);
   color: #fbbf24;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
 }
 
 /* =========================
