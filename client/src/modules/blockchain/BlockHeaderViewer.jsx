@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-
-// Dữ liệu ban đầu khớp hoàn toàn với thông số trong hình
 const INITIAL_BLOCKS = [
   {
     index: 0,
