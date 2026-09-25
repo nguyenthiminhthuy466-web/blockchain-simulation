@@ -1,6 +1,6 @@
 // Import các hàm từ phân hệ crypto (SHA-256 và Cây Merkle)
-import { sha256 } from 'client/src/cryto/SHA-256.js'; 
-import { getMerkleRoot } from 'client/src/crypto/MerkleTree.jsx';   
+import sha256 from '../crypto/SHA-256.js';
+//import { getMerkleRoot } from '../crypto/MerkleTree.jsx';
 
 // Chuỗi 64 số 0 dùng làm giá trị khởi tạo cho khối Genesis (khối đầu tiên)
 const ZERO_HASH = new Array(65).join('0');
