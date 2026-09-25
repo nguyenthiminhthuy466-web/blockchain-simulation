@@ -1,125 +1,267 @@
+
+import MainLayout from "./components/MainLayout";
+import Sha256Visualizer from "./modules/Crypto/Sha256Visualizer";
+import "./App.css";
+
 import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+import React, { useState } from 'react';
+import MainLayout from "./components/MainLayout";
+import Sha256Visualizer from "./modules/Crypto/Sha256Visualizer";
 import './App.css'
 import Sha256Visualizer from './modules/Crypto/Sha256Visualizer';
 
-function App() {
-  const [count, setCount] = useState(0)
 
+const statCards = [
+  {
+    title: "Total Transactions",
+    value: "12,458",
+    description: "Transactions processed",
+    icon: "⇄",
+    color: "cyan",
+  },
+  {
+    title: "Active Nodes",
+    value: "24",
+    description: "Nodes currently online",
+    icon: "◎",
+    color: "green",
+  },
+  {
+    title: "Latest Block",
+    value: "#1,284",
+    description: "Mined 2 minutes ago",
+    icon: "#",
+    color: "purple",
+  },
+  {
+    title: "Network Hashrate",
+    value: "84.6 TH/s",
+    description: "Current network power",
+    icon: "⚡",
+    color: "orange",
+  },
+];
+
+const transactions = [
+  {
+    hash: "0x7a91...3f20",
+    from: "0xA12...91F",
+    to: "0xB55...D20",
+    amount: "2.45 BTC",
+    status: "Confirmed",
+  },
+  {
+    hash: "0x8b32...aa10",
+    from: "0xC89...102",
+    to: "0xD12...B99",
+    amount: "0.82 BTC",
+    status: "Confirmed",
+  },
+  {
+    hash: "0x3c44...fa72",
+    from: "0xE01...A82",
+    to: "0xF90...C14",
+    amount: "5.10 BTC",
+    status: "Pending",
+  },
+  {
+    hash: "0x9d81...cc04",
+    from: "0xA55...BD1",
+    to: "0xF33...E20",
+    amount: "1.25 BTC",
+    status: "Confirmed",
+  },
+];
+
+function StatCard({ title, value, description, icon, color }) {
   return (
-    <>
-      <section id="center">
-  <Sha256Visualizer />  
-  <div className="hero"></div>
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <article className="stat-card">
+      <div className="stat-card-top">
+        <span className="stat-title">{title}</span>
+        <span className={`stat-icon ${color}`}>{icon}</span>
+      </div>
 
-      <div className="ticks"></div>
+      <div className="stat-card-value">{value}</div>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <p className="stat-description">{description}</p>
+    </article>
+  );
 }
 
-export default App
+function NetworkActivity() {
+  const chartData = [42, 68, 50, 78, 55, 88, 64, 92, 72, 100, 82, 70];
+
+  return (
+    <section className="dashboard-panel activity-panel">
+      <div className="panel-heading">
+        <div>
+          <h2>Network Activity</h2>
+          <p>Transaction activity over the last 7 days</p>
+        </div>
+
+        <select className="period-select" defaultValue="7">
+          <option value="7">Last 7 days</option>
+          <option value="30">Last 30 days</option>
+          <option value="90">Last 90 days</option>
+        </select>
+      </div>
+
+      <div className="chart">
+        {chartData.map((height, index) => (
+          <div className="chart-column" key={index}>
+            <div
+              className="chart-bar"
+              style={{ height: `${height}%` }}
+              title={`${height} transactions`}
+            />
+            <span>{index + 1}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function NetworkStatus() {
+  return (
+    <section className="dashboard-panel">
+      <div className="panel-heading">
+        <div>
+          <h2>Network Status</h2>
+          <p>Current system status</p>
+        </div>
+      </div>
+
+      <div className="status-list">
+        <div className="status-row">
+          <span>Network Health</span>
+          <strong className="status-success">
+            <i />
+            Excellent
+          </strong>
+        </div>
+
+        <div className="status-row">
+          <span>Block Time</span>
+          <strong>10.2 seconds</strong>
+        </div>
+
+        <div className="status-row">
+          <span>Connected Nodes</span>
+          <strong>24 / 24</strong>
+        </div>
+
+        <div className="status-row">
+          <span>Sync Status</span>
+          <strong className="status-cyan">
+            <i />
+            Fully Synced
+          </strong>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function RecentTransactions() {
+  return (
+    <section className="dashboard-panel transactions-panel">
+      <div className="panel-heading">
+        <div>
+          <h2>Recent Transactions</h2>
+          <p>Latest transactions on the network</p>
+        </div>
+
+        <button type="button" className="outline-button">
+          View all
+        </button>
+      </div>
+
+      <div className="table-wrapper">
+        <table className="transactions-table">
+          <thead>
+            <tr>
+              <th>Transaction Hash</th>
+              <th>From</th>
+              <th>To</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {transactions.map((transaction) => (
+              <tr key={transaction.hash}>
+                <td className="hash">{transaction.hash}</td>
+                <td className="address">{transaction.from}</td>
+                <td className="address">{transaction.to}</td>
+                <td>{transaction.amount}</td>
+                <td>
+                  <span
+                    className={`transaction-status ${
+                      transaction.status === "Confirmed"
+                        ? "confirmed"
+                        : "pending"
+                    }`}
+                  >
+                    {transaction.status}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  return (
+    <MainLayout>
+      <div className="dashboard">
+        <header className="page-header">
+          <div>
+            <span className="page-label">BLOCKCHAIN SIMULATOR</span>
+            <h1>Blockchain Dashboard</h1>
+            <p>
+              Monitor your blockchain network and explore its current activity.
+            </p>
+          </div>
+
+          <button type="button" className="primary-button">
+            + New Simulation
+          </button>
+        </header>
+
+        <section className="crypto-panel-wrap">
+          <div className="dashboard-panel crypto-panel">
+            <div className="panel-heading">
+              <div>
+                <h2>SHA-256 Visualizer</h2>
+                <p>Visualize the cryptographic hashing process</p>
+              </div>
+            </div>
+
+            <Sha256Visualizer />
+          </div>
+        </section>
+
+        <section className="stats-grid">
+          {statCards.map((card) => (
+            <StatCard key={card.title} {...card} />
+          ))}
+        </section>
+
+        <section className="dashboard-grid">
+          <NetworkActivity />
+          <NetworkStatus />
+        </section>
+
+        <RecentTransactions />
+      </div>
+    </MainLayout>
+  );
+}
+
+export default App;
