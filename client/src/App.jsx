@@ -1,6 +1,15 @@
+
 import MainLayout from "./components/MainLayout";
 import Sha256Visualizer from "./modules/Crypto/Sha256Visualizer";
 import "./App.css";
+
+import { useState } from 'react'
+import React, { useState } from 'react';
+import MainLayout from "./components/MainLayout";
+import Sha256Visualizer from "./modules/Crypto/Sha256Visualizer";
+import './App.css'
+import Sha256Visualizer from './modules/Crypto/Sha256Visualizer';
+
 
 const statCards = [
   {
