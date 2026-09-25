@@ -1,4 +1,5 @@
 import MainLayout from "./components/MainLayout";
+import Sha256Visualizer from "./modules/Crypto/Sha256Visualizer";
 import "./App.css";
 
 const statCards = [
@@ -126,7 +127,8 @@ function NetworkStatus() {
         <div className="status-row">
           <span>Network Health</span>
           <strong className="status-success">
-            <i />Excellent
+            <i />
+            Excellent
           </strong>
         </div>
 
@@ -222,6 +224,19 @@ function App() {
             + New Simulation
           </button>
         </header>
+
+        <section className="crypto-panel-wrap">
+          <div className="dashboard-panel crypto-panel">
+            <div className="panel-heading">
+              <div>
+                <h2>SHA-256 Visualizer</h2>
+                <p>Visualize the cryptographic hashing process</p>
+              </div>
+            </div>
+
+            <Sha256Visualizer />
+          </div>
+        </section>
 
         <section className="stats-grid">
           {statCards.map((card) => (
