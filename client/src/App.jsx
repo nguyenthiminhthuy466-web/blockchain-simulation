@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import MainLayout from "./components/MainLayout";
 import Sha256Visualizer from "./modules/crypto/Sha256Visualizer";
+import BlockHeaderViewer from "./modules/blockchain/BlockHeaderViewer"; // Import thêm BlockHeaderViewer
 import "./App.css";
 
 const statCards = [
@@ -226,6 +227,7 @@ function App() {
           </button>
         </header>
 
+        / SHA-256 VISUALIZER /
         <section className="crypto-panel-wrap">
           <div className="dashboard-panel crypto-panel">
             <div className="panel-heading">
@@ -236,6 +238,20 @@ function App() {
             </div>
 
             <Sha256Visualizer />
+          </div>
+        </section>
+
+        / BLOCK HEADER VIEWER /
+        <section className="crypto-panel-wrap" style={{ marginTop: '24px' }}>
+          <div className="dashboard-panel crypto-panel">
+            <div className="panel-heading">
+              <div>
+                <h2>Block Header Viewer</h2>
+                <p>Inspect block metadata, hash links, and Merkle tree root</p>
+              </div>
+            </div>
+
+            <BlockHeaderViewer />
           </div>
         </section>
 
